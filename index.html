@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Benedict Bibit - Strategy & Finance Portfolio (Dark Theme)</title>
+    <style>
+        /* Custom Colors & Variables - EXPERT OPTION DARK THEME */
+        :root {
+            --primary-color: #004aad; /* Deep Authoritative Blue for branding/links */
+            --secondary-color: #10b981; /* Success Green (Up) for key metrics/CTA */
+            --accent-color: #ef4444; /* Risk Red (Down) */
+            --background-light: #121212; /* Very dark background */
+            --background-accent: #1e1e1e; /* Slightly lighter dark grey for section separators */
+            --card-background: #000000; /* Pure Black for containers/cards */
+            --text-primary: #ffffff; /* Crisp White text */
+            --text-secondary: #a1a1aa; /* Light Grey text for descriptions */
+            /* Adjusted shadows for dark mode visibility */
+            --shadow-lg: 0 4px 10px rgba(0, 0, 0, 0.8), 0 2px 5px rgba(0, 0, 0, 0.5);
+            --shadow-xl: 0 15px 30px rgba(0, 0, 0, 0.9);
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-primary);
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        h1, h2, h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        /* Helper Styles */
+        .text-center { text-align: center; }
+        .font-bold { font-weight: 700; }
+        .font-extrabold { font-weight: 800; }
+        .hidden { display: none !important; }
+
+        /* Navigation */
+        header {
+            background-color: var(--card-background);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4.5rem;
+        }
+        .logo {
+            font-size: 1.5rem;
+            color: var(--secondary-color); /* Logo in vibrant green */
+            font-weight: 800;
+        }
+        .nav-desktop {
+            display: none;
+            gap: 2rem;
+        }
+        @media (min-width: 768px) {
+            .nav-desktop {
+                display: flex;
+            }
+        }
+        .nav-link {
+            color: var(--text-secondary);
+            transition: color 0.2s;
+            padding: 0.5rem 0;
+            font-weight: 500;
+        }
+        .nav-link:hover {
+            color: var(--secondary-color); /* Hover is green */
+        }
+
+        .nav-mobile-button {
+            display: block;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        @media (min-width: 768px) {
+            .nav-mobile-button {
+                display: none;
+            }
+        }
+        .mobile-menu-container {
+            background-color: var(--card-background);
+            padding-bottom: 1rem;
+            border-top: 1px solid #333;
+            position: absolute;
+            width: 100%;
+            z-index: 40;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+        }
+        .mobile-menu-links-group {
+            padding: 0 1.5rem;
+        }
+        .mobile-menu-link {
+            display: block;
+            padding: 0.75rem 0;
+            color: var(--text-primary);
+            font-weight: 500;
+            border-bottom: 1px solid #333;
+        }
+        .mobile-menu-link:last-child {
+            border-bottom: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0;
+            /* Dark, subtle, professional gradient */
+            background: linear-gradient(180deg, var(--background-light) 0%, var(--background-accent) 100%);
+            border-bottom: 2px solid var(--primary-color); 
+            border-bottom-left-radius: 50% 5%;
+            border-bottom-right-radius: 50% 5%;
+        }
+        .hero-subtitle {
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--secondary-color); /* Subtitle in vibrant green */
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+        .hero h1 span {
+            color: var(--secondary-color); /* Key words in success green */
+        }
+        .hero-description {
+            max-width: 48rem;
+            margin: 0 auto 2.5rem;
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+        }
+
+        /* Call to Action Button */
+        .cta-button {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            border-radius: 0.75rem;
+            background-color: var(--secondary-color); /* Action is Green */
+            color: var(--card-background); /* Black text on green */
+            font-weight: 600;
+            box-shadow: var(--shadow-lg);
+            transition: background-color 0.3s, transform 0.1s;
+        }
+        .cta-button:hover {
+            background-color: #059669; /* Darker green on hover */
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* General Section Styling */
+        .section-padding {
+            padding: 4rem 0;
+        }
+        @media (min-width: 768px) {
+            .section-padding {
+                padding: 6rem 0;
+            }
+        }
+        .section-bg-light {
+            background-color: var(--background-accent);
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+        }
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--secondary-color); /* Titles in green */
+        }
+        .section-description {
+            color: var(--text-secondary);
+            max-width: 50rem;
+            margin: 0 auto 4rem;
+        }
+
+        /* Expertise Grid Styles */
+        .expertise-grid {
+            display: grid;
+            gap: 2rem;
+        }
+        @media (min-width: 768px) {
+            .expertise-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 64rem;
+                margin: auto;
+            }
+        }
+        
+        .expertise-card {
+            padding: 2.5rem;
+            border-radius: 1rem;
+            background-color: var(--card-background); /* Pure black card */
+            border: 1px solid #333;
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .expertise-card:hover {
+            transform: translateY(-8px);
+            /* Add a glow on hover for the trading feel */
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.5); 
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .card-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            margin-right: 1rem;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+        }
+        .expertise-card-crypto .card-icon {
+            color: var(--secondary-color); /* Crypto is Green (Growth/Success) */
+            background-color: rgba(16, 185, 129, 0.15);
+        }
+        .expertise-card-invest .card-icon {
+            color: var(--primary-color); /* Investment is Blue (Trust/Professionalism) */
+            background-color: rgba(0, 74, 173, 0.15);
+        }
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary); /* Card titles are white */
+        }
+        .card-text {
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+
+        /* Portfolio Wins (New Section) */
+        .portfolio-overview {
+            background-color: var(--background-accent);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid #333;
+        }
+        .overview-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(1, 1fr);
+        }
+        @media (min-width: 640px) {
+            .overview-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        .overview-metric {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            background-color: var(--card-background); /* Pure Black metrics block */
+            border: 1px solid #282828;
+        }
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--secondary-color); /* Metric values are success green */
+            line-height: 1;
+        }
+        .metric-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+        .portfolio-summary {
+            margin-top: 2rem;
+            color: var(--text-primary);
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        @media (min-width: 640px) {
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            border: 2px solid var(--background-accent);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .gallery-image:hover {
+            transform: scale(1.03);
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+        }
+
+        /* Modal/Lightbox Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            padding: 1rem;
+        }
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-image-zoomed {
+            display: block;
+            max-width: 100%;
+            max-height: 100vh;
+            border-radius: 0.5rem;
+            border: 3px solid var(--secondary-color);
+            animation: zoomIn 0.3s ease-out;
+        }
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 101;
+        }
+        .modal-close:hover,
+        .modal-close:focus {
+            color: var(--secondary-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        /* Contact Section Specific */
+        #contact {
+            background-color: var(--background-light);
+            border-top: 2px dashed #333;
+        }
+        .contact-block {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: var(--background-accent);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            border: 1px solid var(--primary-color);
+            box-shadow: 0 0 20px rgba(0, 74, 173, 0.3); /* Blue glow */
+        }
+        .contact-block a {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        .contact-block a:hover {
+            text-decoration: underline;
+            color: #059669;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000000;
+            color: #4a4a4a;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="container">
+            <div class="navbar-content">
+                <!-- Logo/Name -->
+                <a href="#hero" class="logo smooth-scroll">
+                    J.B. BIBIT
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <nav class="nav-desktop">
+                    <a href="#expertise" class="nav-link smooth-scroll">Expertise</a>
+                    <a href="#portfolio" class="nav-link smooth-scroll">Metrics</a>
+                    <a href="#contact" class="nav-link smooth-scroll">Contact</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="nav-mobile-button" aria-expanded="false">
+                    <!-- Menu Icon SVG -->
+                    <svg id="menu-icon" style="width: 1.75rem; height: 1.75rem; color: var(--text-secondary);" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <!-- Close Icon SVG -->
+                    <svg id="close-icon" class="hidden" style="width: 1.75rem; height: 1.75rem; color: var(--text-secondary);" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden mobile-menu-container">
+            <div class="mobile-menu-links-group">
+                <a href="#expertise" class="mobile-menu-link smooth-scroll" onclick="document.getElementById('mobile-menu-button').click()">Expertise</a>
+                <a href="#portfolio" class="mobile-menu-link smooth-scroll" onclick="document.getElementById('mobile-menu-button').click()">Metrics</a>
+                <a href="#contact" class="mobile-menu-link smooth-scroll" onclick="document.getElementById('mobile-menu-button').click()">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="container text-center">
+                <p class="hero-subtitle">Strategic Business & Data Consultant</p>
+                <h1>
+                    Data-Driven Strategy. <span>Maximized Returns.</span>
+                </h1>
+                <p class="hero-description">
+                    I transform complex financial data into clear strategic action plans, specializing in high-growth ventures and optimized investment performance across digital and traditional markets.
+                </p>
+                <a href="#contact" class="cta-button smooth-scroll">
+                    Start Trading Strategy
+                </a>
+            </div>
+        </section>
+
+        <!-- Expertise Section -->
+        <section id="expertise" class="section-padding section-bg-light">
+            <div class="container">
+                <h2 class="section-title text-center">My Core Services</h2>
+                <p class="section-description text-center">
+                    My offerings are centered on utilizing analytical rigor to ensure optimized investment performance across traditional and digital asset classes.
+                </p>
+
+                <div class="expertise-grid">
+                    
+                    <!-- Service 1: Crypto Trading Data Analyst -->
+                    <div class="expertise-card expertise-card-crypto">
+                        <div class="card-header">
+                            <!-- Icon for Crypto Data Analytics - Upward Trend -->
+                            <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                            <h3 class="card-title">Crypto Trading Data Analyst</h3>
+                        </div>
+                        <p class="card-text">
+                            Deep analysis of on-chain data, market sentiment, and DeFi protocols to uncover predictive trends and manage volatility. I build custom dashboards for clear, real-time insights for strategic financial decision-making in the digital asset space.
+                        </p>
+                    </div>
+
+                    <!-- Service 2: Investment Advisory -->
+                    <div class="expertise-card expertise-card-invest">
+                        <div class="card-header">
+                            <!-- Icon for Investment Advisory - Wallet/Money -->
+                            <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            <h3 class="card-title">Investment Advisory</h3>
+                        </div>
+                        <p class="card-text">
+                            Providing tailored strategies for capital growth, risk mitigation, and portfolio diversification across traditional stocks, commodities, and emerging assets. My advice is grounded in macroeconomic analysis and strict financial modeling.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section (Trading Wins Highlight) -->
+        <section id="portfolio" class="section-padding" style="background-color: var(--background-light);">
+            <div class="container">
+                <h2 class="section-title text-center" style="color: var(--primary-color);">Portfolio Performance Metrics</h2>
+                <p class="section-description text-center" style="margin-bottom: 2rem;">
+                    My track record is built on disciplined execution and leveraging data to capture asymmetrical opportunities in global markets.
+                </p>
+
+                <!-- NEW PORTFOLIO OVERVIEW -->
+                <div class="portfolio-overview">
+                    <div class="overview-grid">
+                        <div class="overview-metric">
+                            <div class="metric-value">$1.2M+</div>
+                            <div class="metric-label">Total Trading Volume (4 Years)</div>
+                        </div>
+                        <div class="overview-metric">
+                            <div class="metric-value">508</div>
+                            <div class="metric-label">Deals Executed Successfully</div>
+                        </div>
+                        <div class="overview-metric">
+                            <div class="metric-value">82%</div>
+                            <div class="metric-label">Strategy Compliance Rate</div>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-summary" style="margin-top: 2rem; font-size: 1.125rem; line-height: 1.6;">
+                        <p>
+                            Over the last four years, I have executed 508 successful deals across diverse asset classes, achieving a cumulative trading volume exceeding $1,200,000. My success stems from rigorous analytical modeling—combining on-chain metrics, macroeconomic indicators, and proprietary risk frameworks—to generate consistent Alpha. The ability to structure and execute a high volume of trades while maintaining an **82% compliance rate** to strict risk management protocols underscores a proven methodology designed for both high-growth and capital preservation.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- TRADING WINS GALLERY -->
+                <h3 class="font-bold text-center" style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--secondary-color);">Visual Evidence of Key Trades (Click to Zoom)</h3>
+                <div class="gallery-grid">
+                    
+                    <!-- Placeholder Images (8 total) - Using dark theme placeholders -->
+                    <img src="./volume.jpg" alt="Volume" class="gallery-image" onclick="openModal('./volume.jpg')">
+                    <img src="./deals.jpg" alt="Deals taken" class="gallery-image" onclick="openModal('./deals.jpg')">
+                    <img src="./deal1.jpg" alt="deal1" class="gallery-image" onclick="openModal('./deal1.jpg')">
+                    <img src="./deal2.jpg" alt="deal2" class="gallery-image" onclick="openModal('./deal2.jpg')">
+                    <img src="./deal3.jpg" alt="deal3" class="gallery-image" onclick="openModal('./deal3.jpg')">
+                    <img src="./deal4.jpg" alt="deal4" class="gallery-image" onclick="openModal('./deal4.jpg')">
+                    <img src="./deal5.jpg" alt="deal5" class="gallery-image" onclick="openModal('./deal5.jpg')">
+                    <img src="./deal6.jpg" alt="deal6" class="gallery-image" onclick="openModal('./deal6.jpg')">    
+		<div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-padding">
+            <div class="container text-center">
+                <h2 class="section-title" style="color: var(--secondary-color);">Ready for Strategic Growth?</h2>
+                <p class="section-description" style="margin-bottom: 3rem; font-size: 1.125rem;">
+                    Let's discuss how data-driven insights and financial expertise can transform your investment portfolio or business strategy.
+                </p>
+
+                <!-- Contact Info -->
+                <div class="contact-block">
+                    <p class="font-bold" style="font-size: 1.5rem; color: var(--secondary-color); margin-bottom: 1rem;">Connect with Me:</p>
+                    
+                    <p style="font-size: 1.125rem; color: var(--text-primary); margin-bottom: 0.5rem;">
+                        Email: <a href="mailto:johnbenedictbibit@gmail.com" class="font-bold">johnbenedictbibit@gmail.com</a>
+                    </p>
+                    <p style="font-size: 1.125rem; color: var(--text-primary); margin-bottom: 1.5rem;">
+                        LinkedIn: <a href="https://www.linkedin.com/in/john-benedict-bibit-55945726b" target="_blank" class="font-bold">John Benedict Bibit</a>
+                    </p>
+
+                    <a href="mailto:johnbenedictbibit@gmail.com" class="cta-button">
+                        Send a Direct Message
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            &copy; 2024 John Benedict Bibit. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- MODAL (Lightbox) Structure -->
+    <div id="image-modal" class="modal-overlay hidden" onclick="closeModal(event)">
+        <div class="modal-content">
+            <!-- Close button is outside the image but inside the overlay -->
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <img id="modal-image" src="" alt="Zoomed Image" class="modal-image-zoomed">
+        </div>
+    </div>
+
+    <!-- Native JavaScript for Interactions -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            const modal = document.getElementById('image-modal');
+            const modalImage = document.getElementById('modal-image');
+
+            // 1. Mobile Menu Toggle
+            const toggleMenu = () => {
+                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('hidden');
+                menuIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+            };
+            mobileMenuButton.addEventListener('click', toggleMenu);
+
+            // 2. Smooth Scrolling
+            document.querySelectorAll('a.smooth-scroll').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        // Close menu if it's open
+                        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                             toggleMenu();
+                        }
+                        
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // 3. Image Zoom/Modal Functionality (Native JS)
+            window.openModal = function(imageSrc) {
+                modalImage.src = imageSrc;
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+            }
+
+            window.closeModal = function(event) {
+                // Check if the click was on the overlay itself (or called directly)
+                if (event && event.target !== modal && event.target.className !== 'modal-close') return;
+                
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            }
+            
+            // Allow closing modal with the ESC key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+            
+            // Attach close modal to the overlay click (if event.target is the modal itself)
+            modal.addEventListener('click', closeModal);
+        });
+    </script>
+</body>
